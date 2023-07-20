@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 ?>
 <div class="wrap">
-    <h2 id="qbein-chat-gpt-settings"><?php echo __( 'Chat with GPT settings' ) ?></h2>
+    <h2 id="chat-with-gpt-settings"><?php echo __( 'Chat with GPT settings' ) ?></h2>
 
 	<?php if ( is_wp_error( $errors ) ): ?>
         <div class="notice notice-error">

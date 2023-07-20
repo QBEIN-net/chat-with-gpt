@@ -13,7 +13,7 @@ if ( ! class_exists( 'QCG_Common' ) ) {
 		/**
 		 * @var string Plugin common system name
 		 */
-		const PLUGIN_SYSTEM_NAME = 'qbein-chat-gpt';
+		const PLUGIN_SYSTEM_NAME = 'chat-with-gpt';
 
 		/**
 		 * @var string Human readable plugin name for front end
@@ -175,9 +175,9 @@ CREATE TABLE " . $table_name . " (
 		 * @return void
 		 */
 		public function qcg_set_data() {
-			wp_enqueue_script( 'qbein-chat-gpt-common', self::get_plugin_root_path('url') . 'asset/common.min.js', array( 'jquery' ), '0.0.11', true );
+			wp_enqueue_script( 'chat-with-gpt-common', self::get_plugin_root_path('url') . 'asset/common.min.js', array( 'jquery' ), '0.0.11', true );
 
-			wp_localize_script( 'qbein-chat-gpt-common', 'qcgmyajax',
+			wp_localize_script( 'chat-with-gpt-common', 'qcgmyajax',
 				array(
 					'url' => admin_url( 'admin-ajax.php' )
 				)

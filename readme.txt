@@ -20,7 +20,7 @@ Please check is your server location country supported by ChatGPT api. [Supporte
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the plugin files to the `/wp-content/plugins/qbein-chat-gpt` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/chat-with-gpt` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to plugin settings page and put your chatGPT apikey and configure plugin
 
