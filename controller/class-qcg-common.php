@@ -90,7 +90,10 @@ CREATE TABLE " . $table_name . " (
 		 */
 		public static function deactivate() {
 			global $wpdb;
-			$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}" . self::PLUGIN_DB_TABLE_NAME );
+
+			$table_name = $wpdb->prefix . self::PLUGIN_DB_TABLE_NAME;
+
+			$wpdb->query( $wpdb->prepare( "DROP TABLE IF EXISTS %s", $table_name ) );
 		}
 
 		/**
@@ -134,7 +137,7 @@ CREATE TABLE " . $table_name . " (
 		 */
 		public static function print_success() {
 			echo '<div class="notice notice-success">';
-			echo '<p style="color:green;font-weight: bold;">' . __( 'Settings successfully updated', self::PLUGIN_SYSTEM_NAME ) . '</p>';
+			echo '<p style="color:green;font-weight: bold;">' . __( 'Settings successfully updated', 'chat-with-gpt' ) . '</p>';
 			echo '</div>';
 		}
 
@@ -161,7 +164,7 @@ CREATE TABLE " . $table_name . " (
 			add_action( 'wp_footer', array( $this, 'qcg_footer_code' ) );
 			// Load js for handling chat
 			add_action( 'wp_enqueue_scripts', array( $this, 'qcg_set_data' ), 99 );
-			wp_enqueue_style( 'qcg-chat-style', self::get_plugin_root_path('url') . 'asset/chat.min.css', array(),'0.0.11' );
+			wp_enqueue_style( 'qcg-chat-style', self::get_plugin_root_path( 'url' ) . 'asset/chat.min.css', array(), '0.0.11' );
 			// Register ajax requests for Chat
 			add_action( 'wp_ajax_qcg_ask_request', 'QCG_Chat::communicate' );
 			add_action( 'wp_ajax_nopriv_qcg_ask_request', 'QCG_Chat::communicate' );
@@ -175,7 +178,7 @@ CREATE TABLE " . $table_name . " (
 		 * @return void
 		 */
 		public function qcg_set_data() {
-			wp_enqueue_script( 'chat-with-gpt-common', self::get_plugin_root_path('url') . 'asset/common.min.js', array( 'jquery' ), '0.0.11', true );
+			wp_enqueue_script( 'chat-with-gpt-common', self::get_plugin_root_path( 'url' ) . 'asset/common.min.js', array( 'jquery' ), '0.0.11', true );
 
 			wp_localize_script( 'chat-with-gpt-common', 'qcgmyajax',
 				array(
@@ -207,8 +210,8 @@ CREATE TABLE " . $table_name . " (
 			array_unshift( $actions,
 				sprintf( '<a href="%s" aria-label="%s">%s</a>',
 					menu_page_url( self::PLUGIN_SYSTEM_NAME, false ),
-					esc_attr__( 'open settings', self::PLUGIN_SYSTEM_NAME ),
-					esc_html__( 'open settings', self::PLUGIN_SYSTEM_NAME )
+					esc_attr__( 'open settings', 'chat-with-gpt' ),
+					esc_html__( 'open settings', 'chat-with-gpt' )
 				)
 			);
 
@@ -221,8 +224,8 @@ CREATE TABLE " . $table_name . " (
 		public function register_settings_pages() {
 			add_submenu_page(
 				'tools.php',
-				__( 'Chat with GPT', self::PLUGIN_SYSTEM_NAME ),
-				__( 'Chat with GPT', self::PLUGIN_SYSTEM_NAME ),
+				__( 'Chat with GPT', 'chat-with-gpt' ),
+				__( 'Chat with GPT', 'chat-with-gpt' ),
 				'administrator',
 				self::PLUGIN_SYSTEM_NAME,
 				__CLASS__ . '::markup_settings_page'
@@ -261,9 +264,12 @@ CREATE TABLE " . $table_name . " (
 				$settings['authenticated'] = false;
 				$myErrors                  = new WP_Error();
 				if ( $error === 'Unauthorized' ) {
-					$myErrors->add( 'api_key', __( 'Please provide correct api key to interact with openai chatGPT!', self::PLUGIN_SYSTEM_NAME ) );
+					$myErrors->add( 'api_key', __( 'Please provide correct api key to interact with openai chatGPT!', 'chat-with-gpt' ) );
 				} else {
-					$myErrors->add( 'api_key', __( 'Can`t connect to openai chatGPT: ' . $error, self::PLUGIN_SYSTEM_NAME ) );
+					$myErrors->add( 'api_key', printf(
+						__( 'Can`t connect to openai chatGPT: %s', 'chat-with-gpt' ),
+						json_encode( $error )
+					) );
 				}
 				$models = QCG_Connector::$default_models;
 			}

@@ -31,21 +31,29 @@ function qcg_requirements_met(): array {
 	$errors = [];
 
 	if ( version_compare( PHP_VERSION, QCG_REQUIRED_PHP_VERSION, '<' ) ) {
-		$errors[] = __( "Your server is running PHP version " . PHP_VERSION . " but this plugin requires at least PHP " . QCG_REQUIRED_PHP_VERSION . ". Please run an upgrade.", QCG_Common::PLUGIN_SYSTEM_NAME );
+		$errors[] = printf(
+			__( 'Your server is running PHP version %1$s but this plugin requires at least PHP %2$s. Please run an upgrade.', 'chat-with-gpt' ),
+			PHP_VERSION,
+			QCG_REQUIRED_PHP_VERSION
+		);
 	}
 
 	if ( version_compare( $wp_version, QCG_REQUIRED_WP_VERSION, '<' ) ) {
-		$errors[] = __( "Your Wordpress running version is " . esc_html( $wp_version ) . " but this plugin requires at least version " . QCG_REQUIRED_WP_VERSION . ". Please run an upgrade.", QCG_Common::PLUGIN_SYSTEM_NAME );
+		$errors[] = printf(
+			__( 'Your Wordpress running version is %1$s but this plugin requires at least version %2$s. Please run an upgrade.', 'chat-with-gpt' ),
+			esc_html( $wp_version ),
+			QCG_REQUIRED_WP_VERSION
+		);
 	}
 
 	$extensions = get_loaded_extensions();
 
 	if ( ! in_array( 'curl', $extensions ) ) {
-		$errors[] = __( "Your need to install curl php extension to continue plugin use. Please install it first.", QCG_Common::PLUGIN_SYSTEM_NAME );
+		$errors[] = __( 'Your need to install curl php extension to continue plugin use. Please install it first.', 'chat-with-gpt' );
 	}
 
 	if ( ! in_array( 'json', $extensions ) ) {
-		$errors[] = __( "Your need to install json php extension to continue plugin use. Please install it first.", QCG_Common::PLUGIN_SYSTEM_NAME );
+		$errors[] = __( 'Your need to install json php extension to continue plugin use. Please install it first.', 'chat-with-gpt' );
 	}
 
 	return $errors;

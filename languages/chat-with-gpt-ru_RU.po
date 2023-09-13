@@ -1,0 +1,302 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Chat with GPT\n"
+"POT-Creation-Date: 2023-09-13 12:34+0300\n"
+"PO-Revision-Date: 2023-09-13 12:48+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: bootstrap.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: bootstrap.php:35
+#, php-format
+msgid ""
+"Your server is running PHP version %1$s but this plugin requires at least "
+"PHP %2$s. Please run an upgrade."
+msgstr ""
+"Ваш сервер работает на PHP версии %1$s, но плагину требуется минимум PHP "
+"версии %2$s. Пожалуйста обновите PHP до минимально необходимой версии."
+
+#: bootstrap.php:43
+#, php-format
+msgid ""
+"Your Wordpress running version is %1$s but this plugin requires at least "
+"version %2$s. Please run an upgrade."
+msgstr ""
+"Версия вашего Wordpress %1$s, но плагину требуется минимально версия %2$s. "
+"Пожалуйста обновите Wordpress до минимально необходимой версии."
+
+#: bootstrap.php:52 svn/tags/1.0.0/bootstrap.php:44 svn/trunk/bootstrap.php:44
+msgid ""
+"Your need to install curl php extension to continue plugin use. Please "
+"install it first."
+msgstr ""
+"Для работы плагина необходимо установить расширение для PHP - curl. "
+"Пожалуйста установите его чтобы продолжить работать с плагином."
+
+#: bootstrap.php:56 svn/tags/1.0.0/bootstrap.php:48 svn/trunk/bootstrap.php:48
+msgid ""
+"Your need to install json php extension to continue plugin use. Please "
+"install it first."
+msgstr ""
+"Для работы плагина необходимо установить расширение для PHP - json. "
+"Пожалуйста установите его чтобы продолжить работать с плагином."
+
+#: controller/class-qcg-chat.php:22
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:22
+#: svn/trunk/controller/class-qcg-chat.php:22
+msgid "Chat is broken. Please contact with administration"
+msgstr "Что-то сломалось. Обратитесь к администратору."
+
+#: controller/class-qcg-chat.php:34
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:34
+#: svn/trunk/controller/class-qcg-chat.php:34
+msgid "The daily request limit has been reached"
+msgstr "Вы исчерпали дневной лимит запросов."
+
+#: controller/class-qcg-chat.php:41 svn/trunk/controller/class-qcg-chat.php:40
+msgid "ChatGPT don`t answer. Please try again"
+msgstr "ChatGPT не отвечает. Попробуйте еще раз позже."
+
+#: controller/class-qcg-chat.php:73
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:71
+#: svn/trunk/controller/class-qcg-chat.php:71
+#, php-format
+msgid "New Email from ChatGPT form on %s"
+msgstr "Новое письмо от ChatGPT с сайта %s"
+
+#: controller/class-qcg-chat.php:76
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:74
+#: svn/trunk/controller/class-qcg-chat.php:74
+#, php-format
+msgid ""
+"New email received from ChatGPT plugin form \n"
+"\n"
+"Email: %1$s"
+msgstr ""
+"Новое письмо от плагина ChatGPT от \n"
+"\n"
+"Email: %1$s"
+
+#: controller/class-qcg-chat.php:84
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:83
+#: svn/trunk/controller/class-qcg-chat.php:83
+msgctxt "email \"From\" field"
+msgid "Site Admin"
+msgstr "Администратор сайта"
+
+#: controller/class-qcg-chat.php:97
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:96
+#: svn/trunk/controller/class-qcg-chat.php:96
+msgid ""
+"Your email has been successfully sent. We will connect with you as soon as "
+"possible."
+msgstr "Ваше письмо отправлено. Мы свяжемся с вами в ближайшее время."
+
+#: controller/class-qcg-chat.php:99
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:98
+#: svn/trunk/controller/class-qcg-chat.php:98
+msgid "Something went wrong. Please try tomorrow"
+msgstr "Что-то пошло не по плану. Попробуйте еще раз завтра"
+
+#: controller/class-qcg-common.php:140
+#: svn/tags/1.0.0/controller/class-qcg-common.php:137
+#: svn/trunk/controller/class-qcg-common.php:137
+msgid "Settings successfully updated"
+msgstr "Настройки успешно обновлены"
+
+#: controller/class-qcg-common.php:213 controller/class-qcg-common.php:214
+#: svn/tags/1.0.0/controller/class-qcg-common.php:210
+#: svn/tags/1.0.0/controller/class-qcg-common.php:211
+#: svn/trunk/controller/class-qcg-common.php:210
+#: svn/trunk/controller/class-qcg-common.php:211
+msgid "open settings"
+msgstr "открыть настройки"
+
+#. Plugin Name of the plugin/theme
+#: controller/class-qcg-common.php:227 controller/class-qcg-common.php:228
+#: svn/tags/1.0.0/controller/class-qcg-common.php:224
+#: svn/tags/1.0.0/controller/class-qcg-common.php:225
+#: svn/trunk/controller/class-qcg-common.php:224
+#: svn/trunk/controller/class-qcg-common.php:225 views/requirements-error.php:7
+msgid "Chat with GPT"
+msgstr "Чат с GPT"
+
+#: controller/class-qcg-common.php:267
+#: svn/tags/1.0.0/controller/class-qcg-common.php:264
+#: svn/trunk/controller/class-qcg-common.php:264
+msgid "Please provide correct api key to interact with openai chatGPT!"
+msgstr "Укажите рабочий АПИ ключ для взаимодействия с chatGPT от openai!"
+
+#: controller/class-qcg-common.php:270
+#, php-format
+msgid "Can`t connect to openai chatGPT: %s"
+msgstr "Не могу соединиться с chatGPT от openai: %s"
+
+#: svn/tags/1.0.0/bootstrap.php:34 svn/trunk/bootstrap.php:34
+msgid "Your server is running PHP version "
+msgstr "Ваш сервер работает на PHP версии "
+
+#: svn/tags/1.0.0/bootstrap.php:38 svn/trunk/bootstrap.php:38
+msgid "Your Wordpress running version is "
+msgstr "Ваш Wordpress работает на версии "
+
+#: svn/tags/1.0.0/controller/class-qcg-chat.php:40
+msgid "ChatGTP don`t answer. Please try again"
+msgstr "ChatGTP не отвечает. Попробуйте еще раз"
+
+#: svn/tags/1.0.0/controller/class-qcg-common.php:266
+#: svn/trunk/controller/class-qcg-common.php:266
+msgid "Can`t connect to openai chatGPT: "
+msgstr "Не могу подключиться к chatGPT от openai : "
+
+#: svn/tags/1.0.0/views/chat.php:15 svn/trunk/views/chat.php:15
+#: views/chat.php:15
+msgid "Ask ChatGPT"
+msgstr "Спросить ChatGPT"
+
+#: svn/tags/1.0.0/views/chat.php:31 svn/trunk/views/chat.php:31
+#: views/chat.php:31
+msgid "Ask ChatGPT..."
+msgstr "Спросить ChatGPT..."
+
+#: svn/tags/1.0.0/views/chat.php:40 svn/trunk/views/chat.php:40
+#: views/chat.php:40
+msgid "Daily Request Limit Reached"
+msgstr "Достигнут Дневной Лимит Запросов"
+
+#: svn/tags/1.0.0/views/chat.php:41 svn/trunk/views/chat.php:41
+#: views/chat.php:41
+msgid ""
+"You've reached the daily limit for requests. To connect with us please enter "
+"your email below."
+msgstr ""
+"Вы использовали дневной лимит на запросы. Для связи с администратором "
+"введите свой email ниже."
+
+#: svn/tags/1.0.0/views/chat.php:58 svn/trunk/views/chat.php:58
+#: views/chat.php:58
+msgid "Send request"
+msgstr "Отправить запрос"
+
+#: svn/tags/1.0.0/views/chat.php:73 svn/tags/1.0.0/views/chat.php:118
+#: svn/tags/1.0.0/views/chat.php:154 svn/trunk/views/chat.php:73
+#: svn/trunk/views/chat.php:118 svn/trunk/views/chat.php:154 views/chat.php:73
+#: views/chat.php:118 views/chat.php:154
+msgid "ChatGPT"
+msgstr "ChatGPT"
+
+#: svn/tags/1.0.0/views/chat.php:76 svn/trunk/views/chat.php:76
+#: views/chat.php:76
+msgid "Hello!<br/>How can I assist you?"
+msgstr "Здравствуйте!<br/>Как я могу вам помочь?"
+
+#: svn/tags/1.0.0/views/chat.php:92 svn/trunk/views/chat.php:92
+#: views/chat.php:92
+msgid "Write your message..."
+msgstr "Напишите ваш текст..."
+
+#: svn/tags/1.0.0/views/chat.php:102 svn/trunk/views/chat.php:102
+#: views/chat.php:102
+msgid "Send"
+msgstr "Отправить"
+
+#: svn/tags/1.0.0/views/chat.php:157 svn/trunk/views/chat.php:157
+#: views/chat.php:157
+msgid "Working..."
+msgstr "Думаю..."
+
+#: svn/tags/1.0.0/views/requirements-error.php:7
+#: svn/trunk/views/requirements-error.php:7 views/requirements-error.php:7
+msgid ""
+"error: Your environment does not meet all of the system requirements listed "
+"below."
+msgstr ""
+"ошибка: Ваше окружение не удовлетворяет всем системным требованиям указанным "
+"ниже."
+
+#: svn/tags/1.0.0/views/requirements-error.php:17
+#: svn/trunk/views/requirements-error.php:17 views/requirements-error.php:17
+msgid ""
+"If you need to upgrade your version of PHP you can ask your hosting company "
+"for assistance, and if you need help upgrading WordPress you can refer to the"
+msgstr ""
+"Если вам нужно обновить вашу версию PHP, вы можете запросить это у вашего "
+"хостинг-провайдер, и если вам нужно обновить WordPress посмотрите в"
+
+#: svn/tags/1.0.0/views/settings-page.php:10
+#: svn/trunk/views/settings-page.php:10 views/settings-page.php:10
+msgid "Chat with GPT settings"
+msgstr "Настройки Чат с GPT"
+
+#: svn/tags/1.0.0/views/settings-page.php:20
+#: svn/trunk/views/settings-page.php:20 views/settings-page.php:20
+msgid "Setting up your account to interact with plugin"
+msgstr "Настроте ваш аккаунт для взаимодействия с плагином"
+
+#: svn/tags/1.0.0/views/settings-page.php:36
+#: svn/trunk/views/settings-page.php:36 views/settings-page.php:36
+msgid "chatGPT Api key"
+msgstr "chatGPT АПИ ключ"
+
+#: svn/tags/1.0.0/views/settings-page.php:36
+#: svn/tags/1.0.0/views/settings-page.php:40
+#: svn/trunk/views/settings-page.php:36 svn/trunk/views/settings-page.php:40
+#: views/settings-page.php:36 views/settings-page.php:40
+msgid "(required)"
+msgstr "(обязательно)"
+
+#: svn/tags/1.0.0/views/settings-page.php:40
+#: svn/trunk/views/settings-page.php:40 views/settings-page.php:40
+msgid "Requests limit per user per day"
+msgstr "Лимит запросов на день на пользователя"
+
+#: svn/tags/1.0.0/views/settings-page.php:44
+#: svn/trunk/views/settings-page.php:44 views/settings-page.php:44
+msgid "Allow guest customers usage"
+msgstr "Разрешить использовать гостевым пользователям"
+
+#: svn/tags/1.0.0/views/settings-page.php:47
+#: svn/trunk/views/settings-page.php:47 views/settings-page.php:47
+msgid "Show chat for guest users"
+msgstr "Показывать чат гостям"
+
+#: svn/tags/1.0.0/views/settings-page.php:51
+#: svn/trunk/views/settings-page.php:51 views/settings-page.php:51
+msgid "Select model"
+msgstr "Выберите модель"
+
+#: svn/tags/1.0.0/views/settings-page.php:62
+#: svn/trunk/views/settings-page.php:62 views/settings-page.php:62
+msgid "Save settings"
+msgstr "Сохранить настройки"
+
+#. Plugin URI of the plugin/theme
+msgid "https://qbein.net/chat-with-gpt"
+msgstr "https://qbein.net/chat-with-gpt"
+
+#. Description of the plugin/theme
+msgid "The Ultimate Plugin for Engaging Chat and Conversations with AI"
+msgstr "Лучший плагин для общения в чате с искусственным интеллектом"
+
+#. Author of the plugin/theme
+msgid "Qbein"
+msgstr "Qbein"
+
+#. Author URI of the plugin/theme
+msgid "https://qbein.net/"
+msgstr "https://qbein.net/"

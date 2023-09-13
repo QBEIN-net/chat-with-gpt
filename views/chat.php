@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
         <header class="qbChat-gpt__header">
             <div>
                 <img alt="chat" src="<?php echo QCG_Common::get_plugin_root_path( 'url' ) ?>asset/images/chat.svg"/>
-                <h2><?php _e( 'Ask ChatGPT', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></h2>
+                <h2><?php _e( 'Ask ChatGPT', 'chat-with-gpt' ) ?></h2>
             </div>
         </header>
     </div>
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
         <header class="qbChat-gpt__header">
             <div>
                 <img alt="chat" src="<?php echo QCG_Common::get_plugin_root_path( 'url' ) ?>asset/images/chat.svg"/>
-                <h2><?php _e( 'Ask ChatGPT...', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></h2>
+                <h2><?php _e( 'Ask ChatGPT...', 'chat-with-gpt' ) ?></h2>
             </div>
             <img alt="logo" src="<?php echo QCG_Common::get_plugin_root_path( 'url' ) ?>asset/images/logo.svg"/>
         </header>
@@ -37,8 +37,8 @@ defined( 'ABSPATH' ) || exit;
         <div class="qbChat-gpt__emailForm" id="qbChatEmail">
             <div class="qbChat-gpt__emailForm-inner">
                 <header class="qbChat-gpt__emailForm-header">
-                    <h3><?php echo __('Daily Request Limit Reached') ?></h3>
-                    <p><?php echo __( "You've reached the daily limit for requests. To connect with us please enter your email below." ) ?></p>
+                    <h3><?php _e( 'Daily Request Limit Reached', 'chat-with-gpt' ) ?></h3>
+                    <p><?php _e( "You've reached the daily limit for requests. To connect with us please enter your email below.", 'chat-with-gpt' ) ?></p>
                 </header>
                 <div class="qbChat-gpt__emailForm-form">
                     <form>
@@ -55,7 +55,7 @@ defined( 'ABSPATH' ) || exit;
 
                         <span class="qbChat-gpt__emailForm-errorMsg"></span>
 
-                        <button type="submit"><?php echo __( 'Send request' ) ?></button>
+                        <button type="submit"><?php _e( 'Send request', 'chat-with-gpt' ) ?></button>
                     </form>
                 </div>
             </div>
@@ -70,10 +70,10 @@ defined( 'ABSPATH' ) || exit;
                     <img alt="ava" src="<?php echo QCG_Common::get_plugin_root_path( 'url' ) ?>asset/images/gpt-avatar.svg"/>
                 </div>
                 <div class="qbChat-gpt__msg-content">
-                    <div class="qbChat-gpt__msg-author"><?php _e( 'ChatGPT', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></div>
+                    <div class="qbChat-gpt__msg-author"><?php _e( 'ChatGPT', 'chat-with-gpt' ) ?></div>
                     <div class="qbChat-gpt__msg-block">
                         <div class="qbChat-gpt__msg-text">
-                            <p><?php _e( 'Hello!<br/>How can I assist you?', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></p>
+                            <p><?php _e( 'Hello!<br/>How can I assist you?', 'chat-with-gpt' ) ?></p>
                         </div>
 
                         <div class="qbChat-gpt__msg-time">
@@ -89,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
         <footer class="qbChat-gpt__footer">
             <div class="qbChat-gpt__footer-sendSection">
             <textarea
-                    placeholder="<?php _e( 'Write your message...', QCG_Common::PLUGIN_SYSTEM_NAME ) ?>"
+                    placeholder="<?php _e( 'Write your message...', 'chat-with-gpt' ) ?>"
                     name="qcg-prompt"
                     id="qcg-prompt"
                     cols="30"
@@ -99,7 +99,7 @@ defined( 'ABSPATH' ) || exit;
 
                 <div class="qbChat-gpt__footer_btn">
                     <button id="qcg-prompt-ask" disabled>
-	                    <?php _e( 'Send', QCG_Common::PLUGIN_SYSTEM_NAME ) ?>
+						<?php _e( 'Send', 'chat-with-gpt' ) ?>
                     </button>
                     <span>shift+enter</span>
                 </div>
@@ -115,7 +115,7 @@ defined( 'ABSPATH' ) || exit;
                 <img alt="ava" src="<?php echo QCG_Common::get_plugin_root_path( 'url' ) ?>asset/images/gpt-avatar.svg"/>
             </div>
             <div class="qbChat-gpt__msg-content">
-                <div class="qbChat-gpt__msg-author"><?php _e( 'ChatGPT', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></div>
+                <div class="qbChat-gpt__msg-author"><?php _e( 'ChatGPT', 'chat-with-gpt' ) ?></div>
                 <div class="qbChat-gpt__msg-block">
                     <div class="qbChat-gpt__msg-text">
                         <p></p>
@@ -151,10 +151,10 @@ defined( 'ABSPATH' ) || exit;
                 <img alt="ava" src="<?php echo QCG_Common::get_plugin_root_path( 'url' ) ?>asset/images/gpt-avatar.svg"/>
             </div>
             <div class="qbChat-gpt__msg-content">
-                <div class="qbChat-gpt__msg-author"><?php _e( 'ChatGPT', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></div>
+                <div class="qbChat-gpt__msg-author"><?php _e( 'ChatGPT', 'chat-with-gpt' ) ?></div>
                 <div class="qbChat-gpt__msg-block">
                     <div class="qbChat-gpt__msg-text">
-                        <p><?php _e( 'Working...', QCG_Common::PLUGIN_SYSTEM_NAME ) ?></p>
+                        <p><?php _e( 'Working...', 'chat-with-gpt' ) ?></p>
                     </div>
 
                     <div class="qbChat-gpt__msg-time">

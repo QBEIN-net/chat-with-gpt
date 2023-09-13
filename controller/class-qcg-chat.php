@@ -19,7 +19,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( ! isset( $settings['authenticated'] ) || ! $settings['authenticated'] ) {
 				die( json_encode( array(
 					'status' => 'qcgInvalidApiKey',
-					'data'   => __( 'Chat is broken. Please contact with administration' )
+					'data'   => __( 'Chat is broken. Please contact with administration', 'chat-with-gpt' )
 				) ) );
 			}
 
@@ -31,13 +31,15 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( $is_limit_exceed ) {
 				die( json_encode( array(
 					'status' => 'qcgLimitPerUserPerDate',
-					'data'   => __( 'The daily request limit has been reached' )
+					'data'   => __( 'The daily request limit has been reached', 'chat-with-gpt' )
 				) ) );
 			}
 
 			$conn = new QCG_Connector( $settings['api_key'] );
 			$ans  = $conn->chatCompetition( $ask, $settings );
-			if (!$ans) die(__('ChatGTP don`t answer. Please try again'));
+			if ( ! $ans ) {
+				die( __( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' ) );
+			}
 			die( json_encode( array(
 				'status' => 'success',
 				'data'   => $ans
@@ -68,13 +70,12 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 		public static function send_email() {
 			$clientEmail = wp_specialchars_decode( $_POST['email'] );
 			$email       = get_site_option( 'admin_email' );
-			$subject     = __( 'New Email from ChatGPT form on %s', site_url() );
+			$subject     = printf( __( 'New Email from ChatGPT form on %s', 'chat-with-gpt' ), site_url() );
 
-			$message = sprintf( __(
-				'New email received from ChatGPT plugin form 
+			$message = sprintf(
+				__( 'New email received from ChatGPT plugin form 
 
-Email: %1$s'
-			),
+Email: %1$s', 'chat-with-gpt' ),
 				$clientEmail
 			);
 
@@ -93,9 +94,9 @@ Email: %1$s'
 
 			if ( is_bool( $sent ) ) {
 				if ( $sent ) {
-					die( __( 'Your email has been successfully sent. We will connect with you as soon as possible.' ) );
+					die( __( 'Your email has been successfully sent. We will connect with you as soon as possible.', 'chat-with-gpt' ) );
 				} else {
-					die( __( 'Something went wrong. Please try tomorrow' ) );
+					die( __( 'Something went wrong. Please try tomorrow', 'chat-with-gpt' ) );
 				}
 			} else {
 				die( $sent );
@@ -115,7 +116,7 @@ Email: %1$s'
 			$table_name = $wpdb->prefix . QCG_Common::PLUGIN_DB_TABLE_NAME;
 			$today      = date( 'Y-m-d' );
 
-			$user = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE ip_address=%s;", $ip ) );
+			$user = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM %s WHERE ip_address=%s;', $table_name, $ip ) );
 
 			if ( empty( $user ) ) {
 				$wpdb->insert( $table_name, array( 'dt' => $today, 'ip_address' => $ip, 'request_count' => 1 ), array( '%s', '%s', '%d' ) );
@@ -124,7 +125,7 @@ Email: %1$s'
 			}
 
 			if ( $user->dt !== $today ) {
-				$wpdb->update( $table_name, array( 'dt' => $today, 'request_count' => 1 ), array( 'id' => $user->id ) );
+				$wpdb->update( $table_name, array( 'dt' => $today, 'request_count' => 1 ), array( 'id' => $user->id ), array( '%s', '%d' ), array( '%d' ) );
 
 				return false;
 			}
@@ -133,7 +134,7 @@ Email: %1$s'
 				return true;
 			}
 
-			$wpdb->update( $table_name, array( 'request_count' => $user->request_count + 1 ), array( 'id' => $user->id ) );
+			$wpdb->update( $table_name, array( 'request_count' => $user->request_count + 1 ), array( 'id' => $user->id ), array( '%d' ), array( '%d' ) );
 
 			return false;
 		}
