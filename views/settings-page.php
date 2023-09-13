@@ -25,10 +25,10 @@ defined( 'ABSPATH' ) || exit;
 		// Load up the passed data, else set to a default.
 		$creating = isset( $_POST['qcg-settings'] );
 
-		$api_key     = $creating && isset( $_POST['api_key'] ) ? wp_unslash( $_POST['api_key'] ) : ( $settings['api_key'] ?? '' );
-		$req_limit   = $creating && isset( $_POST['req_limit'] ) ? wp_unslash( $_POST['req_limit'] ) : ( $settings['req_limit'] ?? '' );
-		$allow_guest = $creating && isset( $_POST['allow_guest'] ) ? $_POST['allow_guest'] : ( $settings['allow_guest'] ?? false );
-		$model       = $creating && isset( $_POST['model'] ) ? wp_unslash( $_POST['model'] ) : ( $settings['model'] ?? '' );
+		$api_key     = $creating && isset( $_POST['api_key'] ) ? esc_attr__( $_POST['api_key'] ) : ( esc_attr__($settings['api_key']) ?? '' );
+		$req_limit   = $creating && isset( $_POST['req_limit'] ) ? esc_attr__( $_POST['req_limit'] ) : ( esc_attr__($settings['req_limit']) ?? '' );
+		$allow_guest = $creating && isset( $_POST['allow_guest'] ) ? esc_attr__($_POST['allow_guest']) : ( esc_attr__($settings['allow_guest']) ?? false );
+		$model       = $creating && isset( $_POST['model'] ) ? esc_attr__( $_POST['model'] ) : ( esc_attr__($settings['model']) ?? '' );
 		?>
 
         <table class="form-table" role="presentation">

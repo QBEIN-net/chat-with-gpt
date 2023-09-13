@@ -93,7 +93,7 @@ CREATE TABLE " . $table_name . " (
 
 			$table_name = $wpdb->prefix . self::PLUGIN_DB_TABLE_NAME;
 
-			$wpdb->query( $wpdb->prepare( "DROP TABLE IF EXISTS %s", $table_name ) );
+			$wpdb->query( $wpdb->prepare( "DROP TABLE IF EXISTS $table_name" ) );
 		}
 
 		/**
@@ -164,7 +164,7 @@ CREATE TABLE " . $table_name . " (
 			add_action( 'wp_footer', array( $this, 'qcg_footer_code' ) );
 			// Load js for handling chat
 			add_action( 'wp_enqueue_scripts', array( $this, 'qcg_set_data' ), 99 );
-			wp_enqueue_style( 'qcg-chat-style', self::get_plugin_root_path( 'url' ) . 'asset/chat.min.css', array(), '0.0.11' );
+			wp_enqueue_style( 'qcg-chat-style', self::get_plugin_root_path( 'url' ) . 'asset/chat.min.css', array(), '0.0.12' );
 			// Register ajax requests for Chat
 			add_action( 'wp_ajax_qcg_ask_request', 'QCG_Chat::communicate' );
 			add_action( 'wp_ajax_nopriv_qcg_ask_request', 'QCG_Chat::communicate' );
@@ -178,7 +178,7 @@ CREATE TABLE " . $table_name . " (
 		 * @return void
 		 */
 		public function qcg_set_data() {
-			wp_enqueue_script( 'chat-with-gpt-common', self::get_plugin_root_path( 'url' ) . 'asset/common.min.js', array( 'jquery' ), '0.0.11', true );
+			wp_enqueue_script( 'chat-with-gpt-common', self::get_plugin_root_path( 'url' ) . 'asset/common.min.js', array( 'jquery' ), '0.0.12', true );
 
 			wp_localize_script( 'chat-with-gpt-common', 'qcgmyajax',
 				array(
@@ -246,7 +246,7 @@ CREATE TABLE " . $table_name . " (
 
 			$myErrors = '';
 			if ( ! empty( $_POST ) ) {
-				if ( ! isset( $_POST['_wpnonce_qcg_nonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce_qcg_nonce'], 'qcg-settings' ) ) {
+				if ( ! isset( $_POST['_wpnonce_qcg_nonce'] ) || ! wp_verify_nonce( sanitize_text_field($_POST['_wpnonce_qcg_nonce']), 'qcg-settings' ) ) {
 					print 'Sorry, your nonce did not verify.';
 					exit;
 				}
@@ -275,6 +275,9 @@ CREATE TABLE " . $table_name . " (
 			}
 
 			if ( isset( $post_data['qcg_settings'] ) ) {
+				if ( ! in_array( $settings['model'], $models ) ) {
+					unset( $settings['model'] );
+				}
 				update_option( 'qcg_settings', $settings );
 				add_action( 'qcg_success_msg', 'QCG_Common::print_success' );
 			}

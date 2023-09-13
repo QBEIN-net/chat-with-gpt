@@ -24,14 +24,20 @@ if ( ! class_exists( 'QCG_Validators' ) ) {
 				switch ( $key ) {
 					case 'api_key':
 						$apikey            = stripslashes( sanitize_text_field( $val ) );
-						$result['api_key'] = $apikey;
+						if (preg_match( '/[\w-]+/', $apikey)) {
+							$result['api_key'] = $apikey;
+						}
 						break;
 					case 'req_limit':
-						$limit               = QCG_Validators::clear_digits( $val );
-						$result['req_limit'] = $limit;
+						$limit = QCG_Validators::clear_digits( $val );
+						if ( filter_var( $limit, FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 0 ) ) ) !== false ) {
+							$result['req_limit'] = $limit;
+						}
 						break;
 					case 'allow_guest':
-						$result['allow_guest'] = (bool) $val;
+						if ( filter_var( $val, FILTER_VALIDATE_BOOLEAN ) !== false ) {
+							$result['allow_guest'] = (bool) $val;
+						}
 						break;
 					case 'model':
 						$model           = stripslashes( sanitize_text_field( $val ) );

@@ -23,10 +23,14 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 				) ) );
 			}
 
-			$ask = json_decode( stripslashes_deep( $_POST['q'] ), true );
-
-			$ip = self::get_user_ip_address() ?? '';
-//			$ip              = '127.0.0.1'; //fixme:debug
+			$ask = json_decode( sanitize_textarea_field( stripslashes_deep( $_POST['q'] ) ), true );
+			if ( json_last_error() !== JSON_ERROR_NONE ) {
+				die( json_encode( array(
+					'status' => 'qcgCommonError',
+					'data'   => __( 'Invalid request', 'chat-with-gpt' )
+				) ) );
+			}
+			$ip              = self::get_user_ip_address() ?? '127.0.0.1';
 			$is_limit_exceed = self::is_user_limits_exceed( $ip, $settings );
 			if ( $is_limit_exceed ) {
 				die( json_encode( array(
@@ -38,7 +42,10 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			$conn = new QCG_Connector( $settings['api_key'] );
 			$ans  = $conn->chatCompetition( $ask, $settings );
 			if ( ! $ans ) {
-				die( __( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' ) );
+				die( json_encode( array(
+					'status' => 'qcgNotAnswer',
+					'data'   => __( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' )
+				) ) );
 			}
 			die( json_encode( array(
 				'status' => 'success',
@@ -49,12 +56,13 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 		/**
 		 * Get user ip address by headers
 		 *
-		 * @return string
+		 * @return string|null
 		 */
-		public static function get_user_ip_address(): string {
+		public static function get_user_ip_address(): ?string {
 			foreach ( array( 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR' ) as $key ) {
 				if ( array_key_exists( $key, $_SERVER ) === true ) {
-					foreach ( explode( ',', $_SERVER[ $key ] ) as $ip ) {
+					$key = sanitize_text_field( $_SERVER[ $key ] );
+					foreach ( explode( ',', $key ) as $ip ) {
 						$ip = trim( $ip );
 
 						if ( filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) !== false ) {
@@ -64,11 +72,11 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 				}
 			}
 
-			return '';
+			return null;
 		}
 
 		public static function send_email() {
-			$clientEmail = wp_specialchars_decode( $_POST['email'] );
+			$clientEmail = sanitize_email( $_POST['email'] );
 			$email       = get_site_option( 'admin_email' );
 			$subject     = printf( __( 'New Email from ChatGPT form on %s', 'chat-with-gpt' ), site_url() );
 
@@ -116,7 +124,7 @@ Email: %1$s', 'chat-with-gpt' ),
 			$table_name = $wpdb->prefix . QCG_Common::PLUGIN_DB_TABLE_NAME;
 			$today      = date( 'Y-m-d' );
 
-			$user = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM %s WHERE ip_address=%s;', $table_name, $ip ) );
+			$user = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE ip_address=%s", $ip ) );
 
 			if ( empty( $user ) ) {
 				$wpdb->insert( $table_name, array( 'dt' => $today, 'ip_address' => $ip, 'request_count' => 1 ), array( '%s', '%s', '%d' ) );

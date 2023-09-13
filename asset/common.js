@@ -188,6 +188,8 @@ function qcgAsk(data) {
             resp = JSON.parse(resp)
             qcgAnswerField.find('.qbChat-gpt__msg-working').remove();
             switch (resp.status) {
+                case 'qcgCommonError':
+                case 'qcgNotAnswer':
                 case 'qcgInvalidApiKey':
                     qcgAnswerField.append(qcgPrepResp(resp.data));
 
