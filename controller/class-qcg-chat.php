@@ -19,7 +19,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( ! isset( $settings['authenticated'] ) || ! $settings['authenticated'] ) {
 				die( json_encode( array(
 					'status' => 'qcgInvalidApiKey',
-					'data'   => __( 'Chat is broken. Please contact with administration', 'chat-with-gpt' )
+					'data'   => esc_attr__( 'Chat is broken. Please contact with administration', 'chat-with-gpt' )
 				) ) );
 			}
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( json_last_error() !== JSON_ERROR_NONE ) {
 				die( json_encode( array(
 					'status' => 'qcgCommonError',
-					'data'   => __( 'Invalid request', 'chat-with-gpt' )
+					'data'   => esc_attr__( 'Invalid request', 'chat-with-gpt' )
 				) ) );
 			}
 			$ip              = self::get_user_ip_address() ?? '127.0.0.1';
@@ -35,7 +35,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( $is_limit_exceed ) {
 				die( json_encode( array(
 					'status' => 'qcgLimitPerUserPerDate',
-					'data'   => __( 'The daily request limit has been reached', 'chat-with-gpt' )
+					'data'   => esc_attr__( 'The daily request limit has been reached', 'chat-with-gpt' )
 				) ) );
 			}
 
@@ -44,12 +44,12 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( ! $ans ) {
 				die( json_encode( array(
 					'status' => 'qcgNotAnswer',
-					'data'   => __( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' )
+					'data'   => esc_attr__( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' )
 				) ) );
 			}
 			die( json_encode( array(
 				'status' => 'success',
-				'data'   => $ans
+				'data'   => esc_html($ans)
 			) ) );
 		}
 

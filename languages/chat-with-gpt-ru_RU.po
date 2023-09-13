@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Chat with GPT\n"
-"POT-Creation-Date: 2023-09-13 12:34+0300\n"
-"PO-Revision-Date: 2023-09-13 12:48+0300\n"
+"POT-Creation-Date: 2023-09-13 21:48+0300\n"
+"PO-Revision-Date: 2023-09-13 21:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -62,24 +62,28 @@ msgstr ""
 msgid "Chat is broken. Please contact with administration"
 msgstr "Что-то сломалось. Обратитесь к администратору."
 
-#: controller/class-qcg-chat.php:34
+#: controller/class-qcg-chat.php:30
+msgid "Invalid request"
+msgstr "Некорректный запрос"
+
+#: controller/class-qcg-chat.php:38
 #: svn/tags/1.0.0/controller/class-qcg-chat.php:34
 #: svn/trunk/controller/class-qcg-chat.php:34
 msgid "The daily request limit has been reached"
 msgstr "Вы исчерпали дневной лимит запросов."
 
-#: controller/class-qcg-chat.php:41 svn/trunk/controller/class-qcg-chat.php:40
+#: controller/class-qcg-chat.php:47 svn/trunk/controller/class-qcg-chat.php:40
 msgid "ChatGPT don`t answer. Please try again"
 msgstr "ChatGPT не отвечает. Попробуйте еще раз позже."
 
-#: controller/class-qcg-chat.php:73
+#: controller/class-qcg-chat.php:81
 #: svn/tags/1.0.0/controller/class-qcg-chat.php:71
 #: svn/trunk/controller/class-qcg-chat.php:71
 #, php-format
 msgid "New Email from ChatGPT form on %s"
 msgstr "Новое письмо от ChatGPT с сайта %s"
 
-#: controller/class-qcg-chat.php:76
+#: controller/class-qcg-chat.php:84
 #: svn/tags/1.0.0/controller/class-qcg-chat.php:74
 #: svn/trunk/controller/class-qcg-chat.php:74
 #, php-format
@@ -92,14 +96,14 @@ msgstr ""
 "\n"
 "Email: %1$s"
 
-#: controller/class-qcg-chat.php:84
+#: controller/class-qcg-chat.php:92
 #: svn/tags/1.0.0/controller/class-qcg-chat.php:83
 #: svn/trunk/controller/class-qcg-chat.php:83
 msgctxt "email \"From\" field"
 msgid "Site Admin"
 msgstr "Администратор сайта"
 
-#: controller/class-qcg-chat.php:97
+#: controller/class-qcg-chat.php:105
 #: svn/tags/1.0.0/controller/class-qcg-chat.php:96
 #: svn/trunk/controller/class-qcg-chat.php:96
 msgid ""
@@ -107,7 +111,7 @@ msgid ""
 "possible."
 msgstr "Ваше письмо отправлено. Мы свяжемся с вами в ближайшее время."
 
-#: controller/class-qcg-chat.php:99
+#: controller/class-qcg-chat.php:107
 #: svn/tags/1.0.0/controller/class-qcg-chat.php:98
 #: svn/trunk/controller/class-qcg-chat.php:98
 msgid "Something went wrong. Please try tomorrow"
@@ -246,7 +250,7 @@ msgstr "Настройки Чат с GPT"
 #: svn/tags/1.0.0/views/settings-page.php:20
 #: svn/trunk/views/settings-page.php:20 views/settings-page.php:20
 msgid "Setting up your account to interact with plugin"
-msgstr "Настроте ваш аккаунт для взаимодействия с плагином"
+msgstr "Настройте ваш аккаунт для взаимодействия с плагином"
 
 #: svn/tags/1.0.0/views/settings-page.php:36
 #: svn/trunk/views/settings-page.php:36 views/settings-page.php:36

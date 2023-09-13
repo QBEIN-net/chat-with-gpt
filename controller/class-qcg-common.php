@@ -54,7 +54,7 @@ if ( ! class_exists( 'QCG_Common' ) ) {
 
 
 				if ( $settings['authenticated'] ) {
-					if ( $settings['allow_guest'] || is_user_logged_in() ) {
+					if ( isset($settings['allow_guest']) && $settings['allow_guest'] || is_user_logged_in() ) {
 						$this->define_common_hooks();
 					}
 				}
