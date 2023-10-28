@@ -19,7 +19,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( ! isset( $settings['authenticated'] ) || ! $settings['authenticated'] ) {
 				die( json_encode( array(
 					'status' => 'qcgInvalidApiKey',
-					'data'   => esc_attr__( 'Chat is broken. Please contact with administration', 'chat-with-gpt' )
+					'data'   => esc_html__( 'Chat is broken. Please contact with administration', 'chat-with-gpt' )
 				) ) );
 			}
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( json_last_error() !== JSON_ERROR_NONE ) {
 				die( json_encode( array(
 					'status' => 'qcgCommonError',
-					'data'   => esc_attr__( 'Invalid request', 'chat-with-gpt' )
+					'data'   => esc_html__( 'Invalid request', 'chat-with-gpt' )
 				) ) );
 			}
 			$ip              = self::get_user_ip_address() ?? '127.0.0.1';
@@ -35,7 +35,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( $is_limit_exceed ) {
 				die( json_encode( array(
 					'status' => 'qcgLimitPerUserPerDate',
-					'data'   => esc_attr__( 'The daily request limit has been reached', 'chat-with-gpt' )
+					'data'   => esc_html__( 'The daily request limit has been reached', 'chat-with-gpt' )
 				) ) );
 			}
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 			if ( ! $ans ) {
 				die( json_encode( array(
 					'status' => 'qcgNotAnswer',
-					'data'   => esc_attr__( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' )
+					'data'   => esc_html__( 'ChatGPT don`t answer. Please try again', 'chat-with-gpt' )
 				) ) );
 			}
 			die( json_encode( array(
@@ -78,17 +78,17 @@ if ( ! class_exists( 'QCG_Chat' ) ) {
 		public static function send_email() {
 			$clientEmail = sanitize_email( $_POST['email'] );
 			$email       = get_site_option( 'admin_email' );
-			$subject     = printf( __( 'New Email from ChatGPT form on %s', 'chat-with-gpt' ), site_url() );
+			$subject     = printf( esc_html__( 'New Email from ChatGPT form on %s', 'chat-with-gpt' ), site_url() );
 
 			$message = sprintf(
-				__( 'New email received from ChatGPT plugin form 
+				esc_html__( 'New email received from ChatGPT plugin form 
 
 Email: %1$s', 'chat-with-gpt' ),
 				$clientEmail
 			);
 
 			$header = sprintf(
-				'From: "%1$s" <%2$s>',
+				esc_html('From: "%1$s" <%2$s>'),
 				_x( 'Site Admin', 'email "From" field' ),
 				$email
 			);
@@ -102,9 +102,9 @@ Email: %1$s', 'chat-with-gpt' ),
 
 			if ( is_bool( $sent ) ) {
 				if ( $sent ) {
-					die( __( 'Your email has been successfully sent. We will connect with you as soon as possible.', 'chat-with-gpt' ) );
+					die( esc_html__( 'Your email has been successfully sent. We will connect with you as soon as possible.', 'chat-with-gpt' ) );
 				} else {
-					die( __( 'Something went wrong. Please try tomorrow', 'chat-with-gpt' ) );
+					die( esc_html__( 'Something went wrong. Please try tomorrow', 'chat-with-gpt' ) );
 				}
 			} else {
 				die( $sent );

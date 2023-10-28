@@ -70,7 +70,7 @@ defined( 'ABSPATH' ) || exit;
                     <img alt="ava" src="<?php echo esc_url( QCG_Common::get_plugin_root_path( 'url' ) ) ?>asset/images/gpt-avatar.svg"/>
                 </div>
                 <div class="qbChat-gpt__msg-content">
-                    <div class="qbChat-gpt__msg-author"><?php esc_attr_e( 'ChatGPT', 'chat-with-gpt' ) ?></div>
+                    <div class="qbChat-gpt__msg-author"><?php esc_html_e( 'ChatGPT', 'chat-with-gpt' ) ?></div>
                     <div class="qbChat-gpt__msg-block">
                         <div class="qbChat-gpt__msg-text">
                             <p><?php echo wp_kses( __( 'Hello!<br/>How can I assist you?', 'chat-with-gpt' ), array( 'br' => array() ) ) ?></p>

@@ -98,17 +98,6 @@ class Psr17Factory implements RequestFactoryInterface, ResponseFactoryInterface,
         return $factory->createServerRequest(...\func_get_args());
     }
 
-    public function createServerRequestFromGlobals(array $server = null, array $get = null, array $post = null, array $cookie = null, array $files = null, StreamInterface $body = null): ServerRequestInterface
-    {
-        $server = $server ?? $_SERVER;
-        $request = $this->createServerRequest($server['REQUEST_METHOD'] ?? 'GET', $this->createUriFromGlobals($server), $server);
-
-        return $this->buildServerRequestFromGlobals($request, $server, $files ?? $_FILES)
-            ->withQueryParams($get ?? $_GET)
-            ->withParsedBody($post ?? $_POST)
-            ->withCookieParams($cookie ?? $_COOKIE)
-            ->withBody($body ?? $this->createStreamFromFile('php://input', 'r+'));
-    }
 
     public function createStream(string $content = ''): StreamInterface
     {

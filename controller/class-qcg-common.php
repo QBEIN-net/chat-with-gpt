@@ -54,7 +54,7 @@ if ( ! class_exists( 'QCG_Common' ) ) {
 
 
 				if ( $settings['authenticated'] ) {
-					if ( isset($settings['allow_guest']) && $settings['allow_guest'] || is_user_logged_in() ) {
+					if ( isset( $settings['allow_guest'] ) && $settings['allow_guest'] || is_user_logged_in() ) {
 						$this->define_common_hooks();
 					}
 				}
@@ -136,9 +136,9 @@ CREATE TABLE " . $table_name . " (
 		 * Print success messages
 		 */
 		public static function print_success() {
-			echo '<div class="notice notice-success">';
-			echo '<p style="color:green;font-weight: bold;">' . __( 'Settings successfully updated', 'chat-with-gpt' ) . '</p>';
-			echo '</div>';
+			echo wp_kses( '<div class="notice notice-success">', array( 'div' => array( 'class' => array() ) ) );
+			echo wp_kses( '<p style="color:green;font-weight: bold;">' . esc_html__( 'Settings successfully updated', 'chat-with-gpt' ) . '</p>', array( 'p' => array( 'style' => array() ) ) );
+			echo wp_kses( '</div>', array( 'div' => array() ) );
 		}
 
 		/**
@@ -210,7 +210,7 @@ CREATE TABLE " . $table_name . " (
 			array_unshift( $actions,
 				sprintf( '<a href="%s" aria-label="%s">%s</a>',
 					menu_page_url( self::PLUGIN_SYSTEM_NAME, false ),
-					esc_attr__( 'open settings', 'chat-with-gpt' ),
+					esc_html__( 'open settings', 'chat-with-gpt' ),
 					esc_html__( 'open settings', 'chat-with-gpt' )
 				)
 			);
@@ -224,8 +224,8 @@ CREATE TABLE " . $table_name . " (
 		public function register_settings_pages() {
 			add_submenu_page(
 				'tools.php',
-				__( 'Chat with GPT', 'chat-with-gpt' ),
-				__( 'Chat with GPT', 'chat-with-gpt' ),
+				esc_html__( 'Chat with GPT', 'chat-with-gpt' ),
+				esc_html__( 'Chat with GPT', 'chat-with-gpt' ),
 				'administrator',
 				self::PLUGIN_SYSTEM_NAME,
 				__CLASS__ . '::markup_settings_page'
@@ -246,7 +246,7 @@ CREATE TABLE " . $table_name . " (
 
 			$myErrors = '';
 			if ( ! empty( $_POST ) ) {
-				if ( ! isset( $_POST['_wpnonce_qcg_nonce'] ) || ! wp_verify_nonce( sanitize_text_field($_POST['_wpnonce_qcg_nonce']), 'qcg-settings' ) ) {
+				if ( ! isset( $_POST['_wpnonce_qcg_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['_wpnonce_qcg_nonce'] ), 'qcg-settings' ) ) {
 					print 'Sorry, your nonce did not verify.';
 					exit;
 				}
@@ -264,10 +264,10 @@ CREATE TABLE " . $table_name . " (
 				$settings['authenticated'] = false;
 				$myErrors                  = new WP_Error();
 				if ( $error === 'Unauthorized' ) {
-					$myErrors->add( 'api_key', __( 'Please provide correct api key to interact with openai chatGPT!', 'chat-with-gpt' ) );
+					$myErrors->add( 'api_key', esc_html__( 'Please provide correct api key to interact with openai chatGPT!', 'chat-with-gpt' ) );
 				} else {
 					$myErrors->add( 'api_key', printf(
-						__( 'Can`t connect to openai chatGPT: %s', 'chat-with-gpt' ),
+						esc_html__( 'Can`t connect to openai chatGPT: %s', 'chat-with-gpt' ),
 						json_encode( $error )
 					) );
 				}
