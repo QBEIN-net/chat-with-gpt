@@ -7,7 +7,7 @@
  * Requires PHP: 7.4
  * Author:      Qbein
  * Author URI:  https://qbein.net/
- * Version:     1.0.1
+ * Version:     1.0.2
  * License: GPLv2 or later
  * Text Domain: chat-with-gpt
  * Domain Path: /languages

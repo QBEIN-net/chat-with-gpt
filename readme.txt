@@ -1,8 +1,8 @@
 === Chat with GPT ===
 Contributors: kubalskiy, stasionok
 Tags: chatgpt, chatgpt3, chatgpt3.5, chatgpt4, gpt, chat, livechat, help
-Tested up to: 6.3.2
-Stable tag: 1.0.1
+Tested up to: 6.4.1
+Stable tag: 1.0.2
 License: GPLv3
 
 Enhance Your WordPress Site with ChatGPT: The Ultimate Plugin for Engaging Chat and Conversations with AI
@@ -11,6 +11,12 @@ Enhance Your WordPress Site with ChatGPT: The Ultimate Plugin for Engaging Chat 
 
 Discover the power of ChatGPT, the top WordPress plugin for creating captivating chat experiences on your website.
 Engage your visitors in meaningful conversations and boost user interaction with this versatile and user-friendly plugin. Get started today!
+
+### The Ultimate ChatGPT prompts compilation for your tasks
+
+We offer you a collection of useful and correct prompts for various tasks.
+
+Follow this link to investigate it: [https://qbein.net/chat-with-gpt](https://qbein.net/chat-with-gpt)
 
 #### CHECK IS SERVER COUNTRY SUPPORTED
 
@@ -50,4 +56,9 @@ Check that you are logged in or checkbox *Show chat for guest users* on plugin s
 
 = 1.0.1 =
 * Fix security issues according to WP Codex
+
+
+= 1.0.2 =
+* Check support WP 6.4.1
+* Update readme with prompt examples
 
