@@ -1,8 +1,9 @@
 === Chat with GPT ===
 Contributors: kubalskiy, stasionok
 Tags: chatgpt, chatgpt3, chatgpt3.5, chatgpt4, gpt, chat, livechat, help
-Tested up to: 6.4.1
-Stable tag: 1.0.2
+Requires at least: 5.0
+Tested up to: 6.8.0
+Stable tag: 1.0.3
 License: GPLv3
 
 Enhance Your WordPress Site with ChatGPT: The Ultimate Plugin for Engaging Chat and Conversations with AI
@@ -51,14 +52,15 @@ Check that you are logged in or checkbox *Show chat for guest users* on plugin s
 
 == Changelog ==
 
-= 1.0 =
-* Basic functionality released.
-
-= 1.0.1 =
-* Fix security issues according to WP Codex
-
+= 1.0.3 =
+* Check support WP 6.8.0
 
 = 1.0.2 =
 * Check support WP 6.4.1
 * Update readme with prompt examples
 
+= 1.0.1 =
+* Fix security issues according to WP Codex
+
+= 1.0 =
+* Basic functionality released.
